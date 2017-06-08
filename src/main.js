@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
+import axios from 'axios'
 Vue.use(MuseUI)
 
 Vue.config.productionTip = false

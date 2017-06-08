@@ -8,8 +8,12 @@
 
 <style lang="less">
 #app {
-  color: red;
-  font-size: 16px
+  li,
+  ul {
+    list-style-type: none
+  }
+}
+</style>
 }
 </style>
 
