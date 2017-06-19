@@ -6,7 +6,9 @@ import router from './router'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 import axios from 'axios'
+import service from '../src/service/service.js'
 Vue.use(MuseUI)
+Vue.prototype.service = service;
 
 Vue.config.productionTip = false
 

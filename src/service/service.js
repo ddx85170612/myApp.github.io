@@ -1,7 +1,8 @@
-import axios from 'axios';
-import API from '../config/URL.js'
 
-export default  {
-
+const service = {
+  console: function (params) {
+      console.log(JSON.parse(JSON.stringify(params)));
+  }
 }
-axios.get(API[])
+export default service;
+

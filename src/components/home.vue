@@ -5,58 +5,71 @@
       <a class="search-icon  icon iconfont icon-sousuo-xianxing"></a>
       <a class="mes icon iconfont icon-119"></a>
     </section>
-    <section class="slider">
-      <swiper loop auto :list="demo06_list"></swiper>
-    </section>
-    <section class="cat">
-      <flexbox :gutter="0" wrap="wrap">
-        <flexbox-item :span="1/3">
-          <div class="flex-demo">
-            <ul>
-              <li>
-                <i class="icon iconfont icon-shezhi-xianxing f26"></i>
-              </li>
-              <li>分类1</li>
-            </ul>
-          </div>
-        </flexbox-item>
-        <flexbox-item :span="1/3">
-          <div class="flex-demo">
-            <ul>
-              <li>
-                <i class="icon iconfont icon-shezhi-xianxing f26"></i>
-              </li>
-              <li>分类2</li>
-            </ul>
-          </div>
-        </flexbox-item>
-        <flexbox-item :span="1/3">
-          <div class="flex-demo">
-            <ul>
-              <li>
-                <i class="icon iconfont icon-shezhi-xianxing f26"></i>
-              </li>
-              <li>分类3</li>
-            </ul>
-          </div>
-        </flexbox-item>
-      </flexbox>
-    </section>
-    <section class="recommend">
-      <div class="title">
-        <span class="icon iconfont icon-diamond-o f26"></span>
-        <span>推荐商品</span>
-      </div>
-      <div class="content">
-  
-      </div>
-    </section>
+    <scroller lock-x scrollbar-y>
+      <!-- 滑动-->
+      <section class="slider">
+        <swiper loop auto :list="demo06_list"></swiper>
+      </section>
+      <!--分类-->
+      <section class="cat">
+        <flexbox :gutter="0" wrap="wrap">
+          <flexbox-item :span="1/3">
+            <div class="flex-demo">
+              <ul>
+                <li>
+                  <i class="icon iconfont icon-shezhi-xianxing f26"></i>
+                </li>
+                <li>分类1</li>
+              </ul>
+            </div>
+          </flexbox-item>
+          <flexbox-item :span="1/3">
+            <div class="flex-demo">
+              <ul>
+                <li>
+                  <i class="icon iconfont icon-shezhi-xianxing f26"></i>
+                </li>
+                <li>分类2</li>
+              </ul>
+            </div>
+          </flexbox-item>
+          <flexbox-item :span="1/3">
+            <div class="flex-demo">
+              <ul>
+                <li>
+                  <i class="icon iconfont icon-shezhi-xianxing f26"></i>
+                </li>
+                <li>分类3</li>
+              </ul>
+            </div>
+          </flexbox-item>
+        </flexbox>
+      </section>
+      <!--推荐商品-->
+      <section class="recommend">
+        <div class="title">
+          <span class="icon iconfont icon-diamond-o f26"></span>
+          <span>推荐商品</span>
+        </div>
+        <div class="content">
+          <x-table :cell-bordered="false">
+            <tbody>
+              <tr v-for="item in recommendData.data">
+                <td>
+                  {{item.shopName}}
+                </td>
+              </tr>
+            </tbody>
+          </x-table>
+        </div>
+      </section>
+    </scroller>
   </div>
 </template>
 <script>
 import URL from '../config/URL.js';
 import axios from 'axios';
-import { XHeader, Swiper, SwiperItem, Flexbox, FlexboxItem } from 'vux';
+import { XHeader, Swiper, SwiperItem, Flexbox, FlexboxItem, Scroller, XTable } from 'vux';
 
 //滑动图片数据
 const baseList = [{
@@ -78,37 +91,29 @@ const urlList = baseList.map((item, index) => ({
 export default {
   data() {
     return {
-      menus: {
-        menu1: 'Take Photo',
-        menu2: 'Choose from photos'
-      },
-      showMenus: false,
       demo06_list: urlList,
-    }
+      recommendData: {}
+    };
   },
   created() {
-    getData: {
-      axios.post(URL.obtainCat)
-        .then(function (res) {
-          // console.log(res);
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
-      axios.post(URL.queryItemSpu)
-        .then(function (res) {
-          console.log(res.data);
-        })
-        .catch(function (err) {
-          console.log(err);
-        })
-    }
+    axios.post(URL.queryItemSpu)
+      .then((res) => {
+        this.recommendData = res.data
+        this.service.console(this.recommendData);;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   },
   components: {
     XHeader,
     Swiper,
     Flexbox,
-    FlexboxItem
+    FlexboxItem,
+    Scroller,
+    XTable
+  },
+  methods: {
   }
 }
 </script>
@@ -155,10 +160,11 @@ export default {
   .recommend {
     height: 50px;
     line-height: 50px;
-    font-size: 26px;
+
     background-color: #EFF2F7;
     .title {
       text-align: center;
+      font-size: 26px;
     }
   }
 }
