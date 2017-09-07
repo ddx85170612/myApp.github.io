@@ -10,6 +10,7 @@ originalConfig = {
   entry: {
     app: './src/main.js'
   },
+  
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -63,3 +64,4 @@ const webpackConfig = originalConfig // 原来的 module.exports 代码赋值给
 module.exports = vuxLoader.merge(webpackConfig, {
   plugins: ['vux-ui']
 })
+

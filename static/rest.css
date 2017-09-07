@@ -448,3 +448,7 @@ template {
 [hidden] {
   display: none;
 }
+
+#app{
+  height: 100%
+}

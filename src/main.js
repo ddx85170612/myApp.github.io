@@ -2,13 +2,14 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+import router from './router/hook'
 import service from '../src/service/service.js'
 import VueScroller from 'vue-scroller'
 
 import YDUI from 'vue-ydui';
+import Vuex from 'vuex'
 import 'vue-ydui/dist/ydui.rem.css';
-/* 使用px：import 'vue-ydui/dist/ydui.px.css'; */
+Vue.use(Vuex)
 Vue.prototype.service = service;
 
 Vue.use(YDUI);
@@ -19,5 +20,7 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: {
+    App
+  }
 })
