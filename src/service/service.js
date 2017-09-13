@@ -1,8 +1,9 @@
+exports.install = function (Vue, options) {
 
-const service = {
-  console: function (params) {
-      console.log(JSON.parse(JSON.stringify(params)));
-  }
-}
-export default service;
-
+  Vue.prototype.h = function () {
+    let rem = document.getElementsByTagName('html')[0].style.fontSize.replace('px','');
+    let _h = document.body.offsetHeight - 140;
+    console.log(_h);
+    return ((_h / rem) - 1)
+  };
+};

@@ -1,6 +1,6 @@
 <template>
-  <div class="car-main">
-    <x-header title="汽车服务"></x-header>
+  <div class="car-wash">
+    <x-header :title="'汽车服务'"></x-header>
     <div class="list">
       <div class="list-item">
         <div class="box" @click="to('carWash')">
@@ -13,39 +13,7 @@
           </div>
         </div>
       </div>
-      <div class="list-item">
-        <div class="box">
-          <div class="box-icon">
-            <yd-icon name="magic" custom slot="icon" size="0.34rem">
-            </yd-icon>
-          </div>
-          <div class="box-text">
-            <span>美容</span>
-          </div>
-        </div>
-      </div>
-      <div class="list-item">
-        <div class="box">
-          <div class="box-icon">
-            <yd-icon name="balance-scale" custom slot="icon" size="0.34rem">
-            </yd-icon>
-          </div>
-          <div class="box-text">
-            <span>保养</span>
-          </div>
-        </div>
-      </div>
-      <div class="list-item">
-        <div class="box">
-          <div class="box-icon">
-            <yd-icon name="cog" custom slot="icon" size="0.34rem">
-            </yd-icon>
-          </div>
-          <div class="box-text">
-            <span>维修</span>
-          </div>
-        </div>
-      </div>
+
     </div>
     <div class="select">
       <div class="select-item" @click="show1=true">
@@ -71,13 +39,13 @@
 
     </div>
 
-    <div id="msg" v-bind:style="{height:h()+'rem'}" class="msg">
+    <div id="msg" class="msg">
 
       <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo">
 
         <yd-list theme="4" slot="list">
-          <yd-list-item v-for="item in list" v-bind:key="item.title" type="link"  href="/carMerchantDetail">
-            <img slot="img" :src="item.img">
+          <yd-list-item v-for="item in list" v-bind:key="item.title" href="#/carMerchantDetail">
+            <img slot="img" :src="item.img" >
             <span slot="title">{{item.title}}</span>
             <yd-list-other slot="other">
               <div>
@@ -180,7 +148,7 @@ export default {
 }
 </script>
 <style lang="less">
-.car-main {
+.car-wash {
   display: flex;
   flex-direction: column;
   .list {

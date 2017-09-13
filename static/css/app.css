@@ -1,6 +1,27 @@
 .bg-gray {
   background: #333332;
 }
+.fr {
+  float: right;
+}
+.fl {
+  float: left;
+}
+.elli {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.elli2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.gy {
+  color: #979797;
+}
 .data-table {
   height: 100%;
   overflow: scroll;
@@ -13,4 +34,13 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.btn {
+  width: 1rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  text-align: center;
+  background: #eb4452;
+  color: #fff;
+  border-radius: 10px;
 }

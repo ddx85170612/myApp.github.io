@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>myapp</title>
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+  <script src="./dropzone.js"></script>
+  <!-- <script src="./dropzone.css"></script> -->
+</head>
+
+<body>
+  <div class="dropzone" id="myDropzone">
+    <div class="am-text-success dz-message">
+      将文件拖拽到此处<br>或点此打开文件管理器选择文件
+    </div>
+  </div>
+  <div id="preview-template" style="display: none;">
+  </div>
+
+  <script type="text/javascript">
+    Dropzone.autoDiscover = false;
+    var myDropzone = new Dropzone("#myDropzone", {
+      url: "http://127.0.0.1:3000/upload",
+      addRemoveLinks: true,
+      method: 'post',
+      filesizeBase: 1024,
+      sending: function (file, xhr, formData) {
+        formData.append("filesize", file.size);
+      },
+      success: function (file, response, e) {
+        var res = JSON.parse(response);
+        if (res.error) {
+          $(file.previewTemplate).children('.dz-error-mark').css('opacity', '1')
+        }
+      },
+      error: function () {
+        console.log(3311313);
+      },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+      },
+      // previewTemplate: document.querySelector('#preview-template').innerHTML,
+      // addedfile: function (file) {
+      //   file.previewElement = Dropzone.createElement(this.options.previewTemplate);
+      // },
+    });
+
+  </script>
+  </script>
+
+</html>

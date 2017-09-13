@@ -11,3 +11,12 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.btn {
+  width: 1rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  text-align: center;
+  background: #eb4452;
+  color: #fff;
+  border-radius: 10px;
+}

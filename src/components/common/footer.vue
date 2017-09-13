@@ -1,23 +1,19 @@
 <template>
-  <footer>
-    <yd-tabbar>
-      <yd-tabbar-item title="加油" link="/gasMain">
-        <yd-icon name="tint" custom slot="icon" size="0.54rem"></yd-icon>
+  <footer id="footer">
+    <yd-tabbar >
+
+      <yd-tabbar-item :active="item.isActive" :title="item.name" :link="item.link" v-for="item in $store.state.tabbar" v-bind:key="item.link">
+        <yd-icon :name="item.icon" custom slot="icon" size="0.54rem">
+        </yd-icon> {{item.name}}
       </yd-tabbar-item>
-      <yd-tabbar-item title="汽车服务" link="/carMain" :active="true">
-        <yd-icon name="truck" custom slot="icon" size="0.54rem"></yd-icon>
-      </yd-tabbar-item>
-      <yd-tabbar-item title="活动" link="/giftMain">
-        <yd-icon name="gift" custom slot="icon" size="0.54rem"></yd-icon>
-      </yd-tabbar-item>
-      <yd-tabbar-item title="我" link="/userMain">
-        <yd-icon name="ucenter" slot="icon" size="0.54rem"></yd-icon>
-      </yd-tabbar-item>
+
     </yd-tabbar>
   </footer>
 </template>
 <script>
+import store from '../../store/index';
 export default {
+  store,
 
 }
 </script>
@@ -25,7 +21,7 @@ export default {
 footer {
   position: absolute;
   width: 100%;
+  height: 50px;
   bottom: 0;
 }
-
 </style>

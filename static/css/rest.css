@@ -452,3 +452,10 @@ template {
 #app{
   height: 100%
 }
+
+button{
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+}
