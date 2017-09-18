@@ -1,11 +1,11 @@
 <template>
   <div class="car-order">
     <!-- <yd-navbar title="订单确认">
-        <router-link to="/carMerchantDetail" slot="left">
-          <yd-navbar-back-icon>返回</yd-navbar-back-icon>
-        </router-link>
-      </yd-navbar> -->
-    <x-header  :title='"支付"' :rightIcon="'sss'"></x-header>
+          <router-link to="/carMerchantDetail" slot="left">
+            <yd-navbar-back-icon>返回</yd-navbar-back-icon>
+          </router-link>
+        </yd-navbar> -->
+    <x-header :title='"支付"' :rightIcon="'sss'"></x-header>
     <yd-cell-group>
       <yd-cell-item>
         <span slot="left">标准洗车:</span>
@@ -32,16 +32,20 @@
         <span slot="right">暂无红包</span>
       </yd-cell-item>
     </yd-cell-group>
-    <div class="order-confirm">
-      <div class="order-item">
-        去支付 $300
-      </div>
+    <div class="form-btn-group">
+      <div class="form-btn" style="background:#eb4452" @click="pay('carPaySuc')"> 去支付 $300</div>
     </div>
   </div>
 </template>
 
 <script>
+import router from '../../router/hook';
 export default {
+  methods: {
+    pay(url) {
+      router.push(url)
+    }
+  }
 }
 </script>
 

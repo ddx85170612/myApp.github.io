@@ -38,7 +38,9 @@ const routes = new Router({
           component: resolve => require(['../components/gift/gift_main.vue'], resolve),
         }
       ]
-    }, {
+    },
+    //   汽车服务
+    {
       path: '/carWash',
       name: 'carWash',
       component: resolve => require(['../components/car/car_wash.vue'], resolve),
@@ -62,8 +64,14 @@ const routes = new Router({
       path: '/carSuc',
       name: 'carSuc',
       component: resolve => require(['../components/car/car_suc.vue'], resolve),
+    }, {
+      path: '/carPaySuc',
+      name: 'carPaySuc',
+      component: resolve => require(['../components/car/car_pay_suc.vue'], resolve),
     }
 
+
+    //汽车服务 end
   ]
 })
 

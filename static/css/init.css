@@ -22,3 +22,12 @@
 .gy {
   color: #979797;
 }
+.tr {
+  text-align: right;
+}
+.tc {
+  text-align: center;
+}
+.tl {
+  text-align: left;
+}

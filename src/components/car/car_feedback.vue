@@ -11,8 +11,8 @@
     <div class="feedback-upload">
 
     </div>
-    <div class="feedbakc-confirm">
-      提交
+   <div class="form-btn-group">
+      <div class="form-btn" style="background:#eb4452">提交</div>
     </div>
   </div>
 </template>
